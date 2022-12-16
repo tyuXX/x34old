@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,13 @@ namespace x34
 
         private void x34_Load(object sender, EventArgs e)
         {
-            
+            if (File.Exists(@".\recent"))
+            {
+                foreach (string i in File.ReadAllLines( @".\recent" ))
+                {
+                    comboBox1.Items.Add(i);
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,16 +39,40 @@ namespace x34
         {
             if (folderbrowse.ShowDialog() == DialogResult.OK)
             {
-                textBox1.Text = folderbrowse.SelectedPath;
+                comboBox1.Text = folderbrowse.SelectedPath;
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty(textBox1.Text))
+            if(!string.IsNullOrEmpty(comboBox1.Text))
             {
+                bool found = false;
+                if (File.Exists( @".\recent" ))
+                {
+                    foreach (string i in File.ReadAllLines( @".\recent" ))
+                    {
+                        if (comboBox1.Text == i)
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+                if (!found)
+                {
+                    File.AppendAllText( @".\recent", comboBox1.Text + "\n" );
+                    if (File.Exists( @".\recent" ))
+                    {
+                        comboBox1.Items.Clear();
+                        foreach (string i in File.ReadAllLines( @".\recent" ))
+                        {
+                            comboBox1.Items.Add( i );
+                        }
+                    }
+                }
                 x34Editor x34Editor = new x34Editor();
-                x34Editor.dir = textBox1.Text;
+                x34Editor.dir = comboBox1.Text;
                 x34Editor.Show();
             }
         }
