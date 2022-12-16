@@ -85,6 +85,7 @@
     <EmbeddedResource Include="x34Generator.resx">
       <DependentUpon>x34Generator.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\x34.exe.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -97,6 +98,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\x34.exe" />
+    <Content Include="bin\Debug\x34.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
