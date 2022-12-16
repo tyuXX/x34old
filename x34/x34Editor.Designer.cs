@@ -43,6 +43,7 @@ namespace x34
             this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editorSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipsONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regenerateX34ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,7 +103,8 @@ namespace x34
             this.x34ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.workspacesToolStripMenuItem,
             this.testbasesToolStripMenuItem,
-            this.testsToolStripMenuItem});
+            this.testsToolStripMenuItem,
+            this.regenerateX34ToolStripMenuItem});
             this.x34ToolStripMenuItem.Name = "x34ToolStripMenuItem";
             this.x34ToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.x34ToolStripMenuItem.Text = "x34";
@@ -148,6 +150,13 @@ namespace x34
             this.toolTipsONToolStripMenuItem.Text = "Tool Tips ON";
             this.toolTipsONToolStripMenuItem.Click += new System.EventHandler(this.toolTipsONToolStripMenuItem_Click);
             // 
+            // regenerateX34ToolStripMenuItem
+            // 
+            this.regenerateX34ToolStripMenuItem.Name = "regenerateX34ToolStripMenuItem";
+            this.regenerateX34ToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
+            this.regenerateX34ToolStripMenuItem.Text = "Regenerate x34";
+            this.regenerateX34ToolStripMenuItem.Click += new System.EventHandler(this.regenerateX34ToolStripMenuItem_Click);
+            // 
             // x34Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -183,5 +192,6 @@ namespace x34
         private System.Windows.Forms.ToolStripMenuItem saveFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editorSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolTipsONToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regenerateX34ToolStripMenuItem;
     }
 }

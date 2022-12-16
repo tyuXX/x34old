@@ -136,5 +136,10 @@ namespace x34
                 label1.Text = "File:*" + openfile;
             }
         }
+
+        private void regenerateX34ToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+            Generate.x34();
+        }
     }
 }
