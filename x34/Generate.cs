@@ -6,6 +6,10 @@ namespace x34
 {
     static public class Generate
     {
+        static public void newuser(string dir = "C:",string passcode = "1234",string name = "NewUser")
+        {
+            
+        }
         static public void x34(string dir = "C:", int workspaces = 4, int testspaces = 4, int tests = 4, bool regen = false)
         {
             dir += @"\x34-Files";
@@ -17,6 +21,7 @@ namespace x34
             {
                 Directory.CreateDirectory(dir);
                 Directory.CreateDirectory(dir + @"\x34-Core\per");
+                Directory.CreateDirectory(dir + @"\x34-Core\users");
                 Directory.CreateDirectory(dir + @"\Workspaces");
                 Directory.CreateDirectory(dir + @"\Programs");
                 Directory.CreateDirectory(dir + @"\Extra");

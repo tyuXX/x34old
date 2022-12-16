@@ -10,6 +10,8 @@ namespace x34
     {
         public string dir = "C:";
         internal string[] info;
+        internal bool tooltips = true;
+        internal string openfile = "";
         public x34Editor()
         {
             InitializeComponent();
@@ -17,12 +19,18 @@ namespace x34
 
         private void x34Editor_Load(object sender, EventArgs e)
         {
-            info = Generate.options(dir,false);
-            workspacesToolStripMenuItem.Text += info[0];
-            testbasesToolStripMenuItem.Text += info[1];
-            testsToolStripMenuItem.Text += info[2];
-            richTextBox1.Lines = Generate.gettree(dir).ToArray();
-            loadfolder(dir);
+            try
+            {
+                info = Generate.options( dir, false );
+                workspacesToolStripMenuItem.Text += info[0];
+                testbasesToolStripMenuItem.Text += info[1];
+                testsToolStripMenuItem.Text += info[2];
+                loadfolder( dir );
+            }
+            catch (Exception)
+            {
+                Close();
+            }
         }
         #region Treeview
         public void loadfolder(string Dir)
@@ -66,21 +74,67 @@ namespace x34
         private void treeView1_MouseMove(object sender, MouseEventArgs e)
         {
 
-            TreeNode theNode = this.treeView1.GetNodeAt(e.X, e.Y);
-            //if (theNode != null & theNode.Tag != null)
-            //{
-            //    if (theNode.Tag.ToString() != this.toolTip1.GetToolTip(this.treeView1))
-            //        this.toolTip1.SetToolTip(this.treeView1, theNode.Tag.ToString());
-            //}
-            //else
-            //{
-            //    this.toolTip1.SetToolTip(this.treeView1, "");
-            //}
+            if (tooltips)
+            {
+                TreeNode theNode = treeView1.GetNodeAt( e.X, e.Y );
+                if (theNode != null && theNode.Tag != null)
+                {
+                    if (theNode.Tag.ToString() != toolTip1.GetToolTip( treeView1 ))
+                    {
+                        toolTip1.SetToolTip( treeView1, theNode.Tag.ToString() );
+                    }
+
+                }
+                else
+                {
+                    toolTip1.SetToolTip( treeView1, "" );
+                }
+            }
+            else
+            {
+                toolTip1.SetToolTip(treeView1,"");
+            }
         }
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            richTextBox1.Text = e.Node.Tag.ToString();
+            if (File.Exists( e.Node.Tag.ToString() ))
+            {
+                label1.Text = "File:" + e.Node.Tag.ToString();
+                openfile = e.Node.Tag.ToString();
+                richTextBox1.Text = File.ReadAllText(e.Node.Tag.ToString());
+            }
         }
         #endregion Treeview
+
+        private void toolTipsONToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+            if (tooltips)
+            {
+                tooltips = false;
+                toolTipsONToolStripMenuItem.Text = "Tool Tips OFF";
+            }
+            else
+            {
+                tooltips = true;
+                toolTipsONToolStripMenuItem.Text = "Tool Tips ON";
+            }
+        }
+
+        private void saveFileToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+            if (!string.IsNullOrEmpty( openfile ))
+            {
+                File.WriteAllText( openfile, richTextBox1.Text );
+                label1.Text = "File:" + openfile;
+            }
+        }
+
+        private void richTextBox1_TextChanged( object sender, EventArgs e )
+        {
+            if (!string.IsNullOrEmpty( openfile ))
+            {
+                label1.Text = "File:*" + openfile;
+            }
+        }
     }
 }
