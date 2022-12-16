@@ -10,9 +10,12 @@ namespace x34
         {
             
         }
-        static public void x34(string dir = "C:", int workspaces = 4, int testspaces = 4, int tests = 4, bool regen = false)
+        static public void x34(string dir = "C:", int workspaces = 4, int testspaces = 4, int tests = 4, bool regen = false,bool direct = false)
         {
-            dir += @"\x34-Files";
+            if (!direct)
+            {
+                dir += @"\x34-Files";
+            }
             if (regen)
             {
                 if (!Directory.Exists( dir ))

@@ -139,7 +139,9 @@ namespace x34
 
         private void regenerateX34ToolStripMenuItem_Click( object sender, EventArgs e )
         {
-            Generate.x34();
+            Generate.x34( dir, Convert.ToInt32(info[0]), Convert.ToInt32( info[1]), Convert.ToInt32( info[2]),true,true);
+            treeView1 = new TreeView();
+            loadfolder( dir );
         }
     }
 }
