@@ -117,12 +117,30 @@ namespace x34
                 for (int i = tests; i > 0; i--)
                 {
                     string dirnt = dirn + "Test" + i + @"\";
-                    Directory.CreateDirectory( dirnt );
-                    Directory.CreateDirectory( dirnt + "Files" );
-                    Directory.CreateDirectory( dirnt + @"Files\P1" );
-                    Directory.CreateDirectory( dirnt + @"Files\P2" );
-                    File.WriteAllText( dirnt + "result", "ongoing\nPossible results for manual use:ongoing,fail,success,todo" );
-                    File.WriteAllText( dirnt + @"Files\test.cmd", "@rem test file" );
+                    if (!Directory.Exists( dirnt ))
+                    {
+                        Directory.CreateDirectory( dirnt );
+                    }
+                    if (!Directory.Exists( dirnt + "Files" ))
+                    {
+                        Directory.CreateDirectory( dirnt + "Files" );
+                    }
+                    if (!Directory.Exists( dirnt + @"Files\P1" ))
+                    {
+                        Directory.CreateDirectory( dirnt + @"Files\P1" );
+                    }
+                    if (!Directory.Exists( dirnt + @"Files\P2" ))
+                    {
+                        Directory.CreateDirectory( dirnt + @"Files\P2" );
+                    }
+                    if (!File.Exists( dirnt + "result" ))
+                    {
+                        File.WriteAllText( dirnt + "result", "ongoing\nPossible results for manual use:ongoing,fail,success,todo" );
+                    }
+                    if (!File.Exists( dirnt + @"Files\test.cmd" ))
+                    {
+                        File.WriteAllText( dirnt + @"Files\test.cmd", "@rem test file" );
+                    }
                 }
             }
             else
