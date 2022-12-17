@@ -39,7 +39,7 @@ namespace x34
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(16, 15);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 28);
             this.button1.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace x34
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(16, 50);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 25);
             this.button2.TabIndex = 1;
@@ -61,7 +61,7 @@ namespace x34
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(473, 53);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(39, 22);
             this.button3.TabIndex = 3;
@@ -90,7 +90,8 @@ namespace x34
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "x34";
             this.Text = "x34 Management";
             this.Load += new System.EventHandler(this.x34_Load);

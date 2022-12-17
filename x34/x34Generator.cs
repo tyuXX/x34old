@@ -29,7 +29,19 @@ namespace x34
 
         private void button1_Click(object sender, EventArgs e)
         {
-            try { Generate.x34(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text)); MessageBox.Show("Sucsess"); }catch(Exception ex) { MessageBox.Show("Please Check the textboxes for a unuseable char."); }
+            try 
+            { 
+                Generate.x34(textBox1.Text, Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text));
+                if ((!string.IsNullOrEmpty(textBox5.Text)) && (!string.IsNullOrEmpty(textBox6.Text))) 
+                { 
+                    Generate.newuser(textBox1.Text,textBox6.Text, textBox5.Text); 
+                } 
+                MessageBox.Show("Sucsess"); 
+            } 
+            catch (Exception) 
+            { 
+                MessageBox.Show("Please Check the textboxes for a unuseable char."); 
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)

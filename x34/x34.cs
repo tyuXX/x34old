@@ -71,9 +71,9 @@ namespace x34
                         }
                     }
                 }
-                x34Editor x34Editor = new x34Editor();
-                x34Editor.dir = comboBox1.Text;
-                x34Editor.Show();
+                Login login = new Login();
+                login.dir = comboBox1.Text;
+                login.Show();
             }
         }
     }

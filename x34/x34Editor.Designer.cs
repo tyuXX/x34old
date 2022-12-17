@@ -35,15 +35,20 @@ namespace x34
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runcmdFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteSelectedFileFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.x34ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.workspacesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testbasesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regenerateX34ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editorSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipsONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.regenerateX34ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.themeLightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.userRoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,10 +98,35 @@ namespace x34
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveFileToolStripMenuItem});
+            this.saveFileToolStripMenuItem,
+            this.runcmdFileToolStripMenuItem,
+            this.deleteSelectedFileFolderToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // saveFileToolStripMenuItem
+            // 
+            this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
+            this.saveFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
+            this.saveFileToolStripMenuItem.Text = "Save File";
+            this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
+            // 
+            // runcmdFileToolStripMenuItem
+            // 
+            this.runcmdFileToolStripMenuItem.Name = "runcmdFileToolStripMenuItem";
+            this.runcmdFileToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.runcmdFileToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
+            this.runcmdFileToolStripMenuItem.Text = "Run .cmd File";
+            this.runcmdFileToolStripMenuItem.Click += new System.EventHandler(this.runcmdFileToolStripMenuItem_Click);
+            // 
+            // deleteSelectedFileFolderToolStripMenuItem
+            // 
+            this.deleteSelectedFileFolderToolStripMenuItem.Name = "deleteSelectedFileFolderToolStripMenuItem";
+            this.deleteSelectedFileFolderToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
+            this.deleteSelectedFileFolderToolStripMenuItem.Text = "Delete Selected File/Folder";
+            this.deleteSelectedFileFolderToolStripMenuItem.Click += new System.EventHandler(this.deleteSelectedFileFolderToolStripMenuItem_Click);
             // 
             // x34ToolStripMenuItem
             // 
@@ -104,7 +134,9 @@ namespace x34
             this.workspacesToolStripMenuItem,
             this.testbasesToolStripMenuItem,
             this.testsToolStripMenuItem,
-            this.regenerateX34ToolStripMenuItem});
+            this.regenerateX34ToolStripMenuItem,
+            this.userToolStripMenuItem,
+            this.userRoleToolStripMenuItem});
             this.x34ToolStripMenuItem.Name = "x34ToolStripMenuItem";
             this.x34ToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.x34ToolStripMenuItem.Text = "x34";
@@ -127,18 +159,25 @@ namespace x34
             this.testsToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
             this.testsToolStripMenuItem.Text = "Tests Per Testspace:";
             // 
-            // saveFileToolStripMenuItem
+            // regenerateX34ToolStripMenuItem
             // 
-            this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            this.saveFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.saveFileToolStripMenuItem.Text = "Save File";
-            this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
+            this.regenerateX34ToolStripMenuItem.Name = "regenerateX34ToolStripMenuItem";
+            this.regenerateX34ToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
+            this.regenerateX34ToolStripMenuItem.Text = "Regenerate x34";
+            this.regenerateX34ToolStripMenuItem.Click += new System.EventHandler(this.regenerateX34ToolStripMenuItem_Click);
+            // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
+            this.userToolStripMenuItem.Text = "User:";
+            this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
             // editorSettingsToolStripMenuItem
             // 
             this.editorSettingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolTipsONToolStripMenuItem});
+            this.toolTipsONToolStripMenuItem,
+            this.themeLightToolStripMenuItem});
             this.editorSettingsToolStripMenuItem.Name = "editorSettingsToolStripMenuItem";
             this.editorSettingsToolStripMenuItem.Size = new System.Drawing.Size(120, 24);
             this.editorSettingsToolStripMenuItem.Text = "Editor Settings";
@@ -146,16 +185,22 @@ namespace x34
             // toolTipsONToolStripMenuItem
             // 
             this.toolTipsONToolStripMenuItem.Name = "toolTipsONToolStripMenuItem";
-            this.toolTipsONToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.toolTipsONToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.toolTipsONToolStripMenuItem.Text = "Tool Tips ON";
             this.toolTipsONToolStripMenuItem.Click += new System.EventHandler(this.toolTipsONToolStripMenuItem_Click);
             // 
-            // regenerateX34ToolStripMenuItem
+            // themeLightToolStripMenuItem
             // 
-            this.regenerateX34ToolStripMenuItem.Name = "regenerateX34ToolStripMenuItem";
-            this.regenerateX34ToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
-            this.regenerateX34ToolStripMenuItem.Text = "Regenerate x34";
-            this.regenerateX34ToolStripMenuItem.Click += new System.EventHandler(this.regenerateX34ToolStripMenuItem_Click);
+            this.themeLightToolStripMenuItem.Name = "themeLightToolStripMenuItem";
+            this.themeLightToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.themeLightToolStripMenuItem.Text = "Theme [Light]";
+            this.themeLightToolStripMenuItem.Click += new System.EventHandler(this.themeLightToolStripMenuItem_Click);
+            // 
+            // userRoleToolStripMenuItem
+            // 
+            this.userRoleToolStripMenuItem.Name = "userRoleToolStripMenuItem";
+            this.userRoleToolStripMenuItem.Size = new System.Drawing.Size(258, 26);
+            this.userRoleToolStripMenuItem.Text = "UserRole:";
             // 
             // x34Editor
             // 
@@ -166,6 +211,7 @@ namespace x34
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "x34Editor";
@@ -193,5 +239,10 @@ namespace x34
         private System.Windows.Forms.ToolStripMenuItem editorSettingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolTipsONToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem regenerateX34ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem runcmdFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem themeLightToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteSelectedFileFolderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userRoleToolStripMenuItem;
     }
 }

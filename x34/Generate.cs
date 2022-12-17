@@ -4,13 +4,30 @@ using System.IO;
 
 namespace x34
 {
+    public struct User
+    {
+        public string name;
+        public string password;
+    }
     static public class Generate
     {
-        static public void newuser(string dir = "C:",string passcode = "1234",string name = "NewUser")
+        static public void newuser(string dir = "C:",string passcode = "1234",string name = "NewUser",bool direct = false,string role = "Admin")
         {
-            
+            if (direct)
+            {
+                dir += @"\x34-Core\users\";
+            }
+            else
+            {
+                dir += @"\x34-Files\x34-Core\users\";
+            }
+            if (!File.Exists(dir + name))
+            {
+                string[] wrt = new string[3] { passcode, Guid.NewGuid().ToString(),role};
+                File.WriteAllLines(dir + name, wrt);
+            }
         }
-        static public void x34(string dir = "C:", int workspaces = 4, int testspaces = 4, int tests = 4, bool regen = false,bool direct = false)
+        static public void x34(string dir = "C:", int workspaces = 4, int testspaces = 4, int tests = 4, bool regen = false, bool direct = false)
         {
             if (!direct)
             {
@@ -42,6 +59,9 @@ namespace x34
                 }if (!Directory.Exists( dir + @"\Extra" ))
                 {
                     Directory.CreateDirectory( dir + @"\Extra" );
+                }if (!Directory.Exists( dir + @"\Tmp" ))
+                {
+                    Directory.CreateDirectory( dir + @"\Tmp" );
                 }if (!Directory.Exists( dir + @"\Programs\Qr" ))
                 {
                     Directory.CreateDirectory( dir + @"\Programs\Qr" );
@@ -67,6 +87,7 @@ namespace x34
                 Directory.CreateDirectory(dir + @"\Workspaces");
                 Directory.CreateDirectory(dir + @"\Programs");
                 Directory.CreateDirectory(dir + @"\Extra");
+                Directory.CreateDirectory(dir + @"\Tmp");
                 Directory.CreateDirectory(dir + @"\Programs\Qr");
                 Directory.CreateDirectory(dir + @"\Programs\Qr\Scanner");
                 Directory.CreateDirectory(dir + @"\Programs\Qr\Reader");
@@ -150,7 +171,7 @@ namespace x34
             {
                 string dirn = dir + @"\Testspace" + num + @"\";
                 Directory.CreateDirectory( dirn );
-                File.WriteAllText( dirn + "readme.txt", "This is the testspace " + num + " of the x34 system please do not touch the automaticly generated filen if you do not know what you are doing." );
+                File.WriteAllText( dirn + "readme.txt", "This is the testspace " + num + " of the x34 system please do not touch the automaticly generated files if you do not know what you are doing." );
                 File.WriteAllText( dirn + "lock", "false" );
                 for (int i = tests; i > 0; i--)
                 {

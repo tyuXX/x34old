@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace x34
@@ -9,8 +11,11 @@ namespace x34
     public partial class x34Editor : Form
     {
         public string dir = "C:";
+        public string username = "user";
+        public string userrole = "Default";
         internal string[] info;
         internal bool tooltips = true;
+        internal bool theme = false;
         internal string openfile = "";
         public x34Editor()
         {
@@ -25,6 +30,8 @@ namespace x34
                 workspacesToolStripMenuItem.Text += info[0];
                 testbasesToolStripMenuItem.Text += info[1];
                 testsToolStripMenuItem.Text += info[2];
+                userToolStripMenuItem.Text += username;
+                userRoleToolStripMenuItem.Text += userrole;
                 loadfolder( dir );
             }
             catch (Exception)
@@ -142,6 +149,72 @@ namespace x34
             Generate.x34( dir, Convert.ToInt32(info[0]), Convert.ToInt32( info[1]), Convert.ToInt32( info[2]),true,true);
             treeView1.Nodes.Clear();
             loadfolder( dir );
+        }
+
+        private void runcmdFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(openfile))
+            {
+                if (File.Exists(openfile))
+                {
+                    ProcessStartInfo processStartInfo = new ProcessStartInfo();
+                    processStartInfo.FileName = "cmd.exe";
+                    processStartInfo.Arguments = "/c " + openfile;
+                    Process.Start(processStartInfo);
+                }
+            }
+        }
+
+        private void themeLightToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (theme)
+            {
+                theme = false;
+                themeLightToolStripMenuItem.Text = "Theme [Light]";
+                this.BackColor = System.Drawing.Color.White;
+                richTextBox1.BackColor = System.Drawing.Color.White;
+                richTextBox1.ForeColor = System.Drawing.Color.Black;
+                treeView1.BackColor = System.Drawing.Color.White;
+                treeView1.ForeColor = System.Drawing.Color.Black;
+                menuStrip1.BackColor = System.Drawing.Color.White;
+                menuStrip1.ForeColor = System.Drawing.Color.Black;
+            }
+            else
+            {
+                theme = true;
+                themeLightToolStripMenuItem.Text = "Theme [Dark]";
+                this.BackColor = System.Drawing.Color.Black;
+                richTextBox1.BackColor = System.Drawing.Color.Black;
+                richTextBox1.ForeColor = System.Drawing.Color.White;
+                treeView1.BackColor = System.Drawing.Color.Black;
+                treeView1.ForeColor = System.Drawing.Color.White;
+                menuStrip1.BackColor = System.Drawing.Color.Gray;
+                menuStrip1.ForeColor = System.Drawing.Color.White;
+            }
+        }
+
+        private void deleteSelectedFileFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(treeView1.SelectedNode.Tag.ToString()))
+            {
+                File.Delete(treeView1.SelectedNode.Tag.ToString());
+                treeView1.Nodes.Clear();
+                loadfolder(dir);
+            }
+            if (Directory.Exists(treeView1.SelectedNode.Tag.ToString()))
+            {
+                Directory.Delete(treeView1.SelectedNode.Tag.ToString(),true);
+                treeView1.Nodes.Clear();
+                loadfolder(dir);
+            }
+        }
+
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.dir = dir;
+            login.Show();
+            this.Close();
         }
     }
 }
