@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace x34
@@ -16,6 +14,7 @@ namespace x34
         internal string[] info;
         internal bool tooltips = true;
         internal bool theme = false;
+        internal bool newopen = false;
         internal string openfile = "";
         public x34Editor()
         {
@@ -33,6 +32,10 @@ namespace x34
                 userToolStripMenuItem.Text += username;
                 userRoleToolStripMenuItem.Text += userrole;
                 loadfolder( dir );
+                if(userrole == "Admin")
+                {
+
+                }
             }
             catch (Exception)
             {
@@ -109,6 +112,7 @@ namespace x34
                 label1.Text = "File:" + e.Node.Tag.ToString();
                 openfile = e.Node.Tag.ToString();
                 richTextBox1.Text = File.ReadAllText(e.Node.Tag.ToString());
+                newopen = true;
             }
         }
         #endregion Treeview
@@ -140,7 +144,14 @@ namespace x34
         {
             if (!string.IsNullOrEmpty( openfile ))
             {
-                label1.Text = "File:*" + openfile;
+                if (newopen)
+                {
+                    newopen = false;
+                }
+                else
+                {
+                    label1.Text = "File:*" + openfile;
+                }
             }
         }
 
@@ -215,6 +226,18 @@ namespace x34
             login.dir = dir;
             login.Show();
             this.Close();
+        }
+
+        private void openUserManagementMenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(userrole == "Admin")
+            {
+                x34AdminMenu x34AdminMenu = new x34AdminMenu();
+                x34AdminMenu.dir = dir;
+                x34AdminMenu.username = username;
+                x34AdminMenu.userrole = userrole;
+                x34AdminMenu.Show();
+            }
         }
     }
 }
