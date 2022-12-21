@@ -45,11 +45,12 @@ namespace x34
             this.regenerateX34ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userRoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openUserManagementMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editorSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTipsONToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.themeLightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.openUserManagementMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshTreeViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +100,8 @@ namespace x34
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveFileToolStripMenuItem,
             this.runcmdFileToolStripMenuItem,
-            this.deleteSelectedFileFolderToolStripMenuItem});
+            this.deleteSelectedFileFolderToolStripMenuItem,
+            this.refreshTreeViewToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -144,40 +146,47 @@ namespace x34
             // workspacesToolStripMenuItem
             // 
             this.workspacesToolStripMenuItem.Name = "workspacesToolStripMenuItem";
-            this.workspacesToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.workspacesToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.workspacesToolStripMenuItem.Text = "Workspaces:";
             // 
             // testbasesToolStripMenuItem
             // 
             this.testbasesToolStripMenuItem.Name = "testbasesToolStripMenuItem";
-            this.testbasesToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.testbasesToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.testbasesToolStripMenuItem.Text = "Testbases Per Workspace:";
             // 
             // testsToolStripMenuItem
             // 
             this.testsToolStripMenuItem.Name = "testsToolStripMenuItem";
-            this.testsToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.testsToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.testsToolStripMenuItem.Text = "Tests Per Testspace:";
             // 
             // regenerateX34ToolStripMenuItem
             // 
             this.regenerateX34ToolStripMenuItem.Name = "regenerateX34ToolStripMenuItem";
-            this.regenerateX34ToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.regenerateX34ToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.regenerateX34ToolStripMenuItem.Text = "Regenerate x34";
             this.regenerateX34ToolStripMenuItem.Click += new System.EventHandler(this.regenerateX34ToolStripMenuItem_Click);
             // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.userToolStripMenuItem.Text = "User:";
             this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
             // userRoleToolStripMenuItem
             // 
             this.userRoleToolStripMenuItem.Name = "userRoleToolStripMenuItem";
-            this.userRoleToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
+            this.userRoleToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.userRoleToolStripMenuItem.Text = "UserRole:";
+            // 
+            // openUserManagementMenuToolStripMenuItem
+            // 
+            this.openUserManagementMenuToolStripMenuItem.Name = "openUserManagementMenuToolStripMenuItem";
+            this.openUserManagementMenuToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.openUserManagementMenuToolStripMenuItem.Text = "Admin Menu";
+            this.openUserManagementMenuToolStripMenuItem.Click += new System.EventHandler(this.openUserManagementMenuToolStripMenuItem_Click);
             // 
             // editorSettingsToolStripMenuItem
             // 
@@ -191,23 +200,23 @@ namespace x34
             // toolTipsONToolStripMenuItem
             // 
             this.toolTipsONToolStripMenuItem.Name = "toolTipsONToolStripMenuItem";
-            this.toolTipsONToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.toolTipsONToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.toolTipsONToolStripMenuItem.Text = "Tool Tips ON";
             this.toolTipsONToolStripMenuItem.Click += new System.EventHandler(this.toolTipsONToolStripMenuItem_Click);
             // 
             // themeLightToolStripMenuItem
             // 
             this.themeLightToolStripMenuItem.Name = "themeLightToolStripMenuItem";
-            this.themeLightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.themeLightToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.themeLightToolStripMenuItem.Text = "Theme [Light]";
             this.themeLightToolStripMenuItem.Click += new System.EventHandler(this.themeLightToolStripMenuItem_Click);
             // 
-            // openUserManagementMenuToolStripMenuItem
+            // refreshTreeViewToolStripMenuItem
             // 
-            this.openUserManagementMenuToolStripMenuItem.Name = "openUserManagementMenuToolStripMenuItem";
-            this.openUserManagementMenuToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.openUserManagementMenuToolStripMenuItem.Text = "Admin Menu";
-            this.openUserManagementMenuToolStripMenuItem.Click += new System.EventHandler(this.openUserManagementMenuToolStripMenuItem_Click);
+            this.refreshTreeViewToolStripMenuItem.Name = "refreshTreeViewToolStripMenuItem";
+            this.refreshTreeViewToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.refreshTreeViewToolStripMenuItem.Text = "Refresh Tree View";
+            this.refreshTreeViewToolStripMenuItem.Click += new System.EventHandler(this.refreshTreeViewToolStripMenuItem_Click);
             // 
             // x34Editor
             // 
@@ -251,5 +260,6 @@ namespace x34
         private System.Windows.Forms.ToolStripMenuItem deleteSelectedFileFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userRoleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openUserManagementMenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshTreeViewToolStripMenuItem;
     }
 }

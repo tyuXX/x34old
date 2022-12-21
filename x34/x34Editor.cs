@@ -8,6 +8,7 @@ namespace x34
 {
     public partial class x34Editor : Form
     {
+        #region Vars
         public string dir = "C:";
         public string username = "user";
         public string userrole = "Default";
@@ -16,6 +17,7 @@ namespace x34
         internal bool theme = false;
         internal bool newopen = false;
         internal string openfile = "";
+        #endregion Vars
         public x34Editor()
         {
             InitializeComponent();
@@ -115,8 +117,17 @@ namespace x34
                 newopen = true;
             }
         }
+        private void reftree()
+        {
+            treeView1.Nodes.Clear();
+            loadfolder( dir );
+        }
         #endregion Treeview
-
+        #region Menustrip
+        private void refreshTreeViewToolStripMenuItem_Click( object sender, EventArgs e )
+        {
+            reftree();
+        }
         private void toolTipsONToolStripMenuItem_Click( object sender, EventArgs e )
         {
             if (tooltips)
@@ -140,28 +151,11 @@ namespace x34
             }
         }
 
-        private void richTextBox1_TextChanged( object sender, EventArgs e )
-        {
-            if (!string.IsNullOrEmpty( openfile ))
-            {
-                if (newopen)
-                {
-                    newopen = false;
-                }
-                else
-                {
-                    label1.Text = "File:*" + openfile;
-                }
-            }
-        }
-
         private void regenerateX34ToolStripMenuItem_Click( object sender, EventArgs e )
         {
             Generate.x34( dir, Convert.ToInt32( info[0] ), Convert.ToInt32( info[1] ), Convert.ToInt32( info[2] ), true, true );
-            treeView1.Nodes.Clear();
-            loadfolder( dir );
+            reftree();
         }
-
         private void runcmdFileToolStripMenuItem_Click( object sender, EventArgs e )
         {
             if (!string.IsNullOrEmpty( openfile ))
@@ -175,7 +169,6 @@ namespace x34
                 }
             }
         }
-
         private void themeLightToolStripMenuItem_Click( object sender, EventArgs e )
         {
             if (theme)
@@ -209,14 +202,12 @@ namespace x34
             if (File.Exists( treeView1.SelectedNode.Tag.ToString() ))
             {
                 File.Delete( treeView1.SelectedNode.Tag.ToString() );
-                treeView1.Nodes.Clear();
-                loadfolder( dir );
+                reftree();
             }
             if (Directory.Exists( treeView1.SelectedNode.Tag.ToString() ))
             {
                 Directory.Delete( treeView1.SelectedNode.Tag.ToString(), true );
-                treeView1.Nodes.Clear();
-                loadfolder( dir );
+                reftree();
             }
         }
 
@@ -237,6 +228,21 @@ namespace x34
                 x34AdminMenu.username = username;
                 x34AdminMenu.userrole = userrole;
                 x34AdminMenu.Show();
+            }
+        }
+        #endregion Menustrip
+        private void richTextBox1_TextChanged( object sender, EventArgs e )
+        {
+            if (!string.IsNullOrEmpty( openfile ))
+            {
+                if (newopen)
+                {
+                    newopen = false;
+                }
+                else
+                {
+                    label1.Text = "File:*" + openfile;
+                }
             }
         }
     }

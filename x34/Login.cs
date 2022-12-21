@@ -7,6 +7,7 @@ namespace x34
     public partial class Login : Form
     {
         public string dir = "C:";
+        internal string[] info;
         public Login()
         {
             InitializeComponent();
@@ -36,6 +37,18 @@ namespace x34
             {
                 textBox1.Clear();
                 maskedTextBox1.Clear();
+            }
+        }
+
+        private void Login_Load( object sender, EventArgs e )
+        {
+            try
+            {
+                info = Generate.options( dir, false );
+            }
+            catch (Exception)
+            { 
+                this.Close();
             }
         }
     }
