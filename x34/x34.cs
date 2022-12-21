@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace x34
@@ -18,24 +11,24 @@ namespace x34
             InitializeComponent();
         }
 
-        private void x34_Load(object sender, EventArgs e)
+        private void x34_Load( object sender, EventArgs e )
         {
-            if (File.Exists(@".\recent"))
+            if (File.Exists( @".\recent" ))
             {
                 foreach (string i in File.ReadAllLines( @".\recent" ))
                 {
-                    comboBox1.Items.Add(i);
+                    comboBox1.Items.Add( i );
                 }
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click( object sender, EventArgs e )
         {
             x34Generator x34Generator = new x34Generator();
             x34Generator.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click( object sender, EventArgs e )
         {
             if (folderbrowse.ShowDialog() == DialogResult.OK)
             {
@@ -43,9 +36,9 @@ namespace x34
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click( object sender, EventArgs e )
         {
-            if(!string.IsNullOrEmpty(comboBox1.Text))
+            if (!string.IsNullOrEmpty( comboBox1.Text ))
             {
                 bool found = false;
                 if (File.Exists( @".\recent" ))

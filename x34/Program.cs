@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace x34
@@ -11,8 +8,8 @@ namespace x34
         [STAThread]
         static void Main()
         {
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new x34());
+            Application.SetCompatibleTextRenderingDefault( false );
+            Application.Run( new x34() );
         }
     }
 }
