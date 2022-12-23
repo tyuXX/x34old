@@ -24,4 +24,4 @@ jobs:
         tag_name: v${{ steps.extract_and_increment.outputs.new_tag }}
         release_name: Release v${{ steps.extract_and_increment.outputs.new_tag }}
         body: |
-          Auto Generated
+          Auto Generated.
