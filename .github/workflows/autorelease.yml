@@ -19,10 +19,15 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
+        tag_name: v${{ steps.extract_and_increment.outputs.new_tag }}
+        release_name: Release v${{ steps.extract_and_increment.outputs.new_tag }}
         body: |
-          This is the description for the release.
+          Auto Generated
+    - name: Extract and increment tag
+      run: |
+        TAG=$(echo ${{ steps.latest_release.outputs.tag_name }} | sed 's/[^0-9]*//g')
+        NEW_TAG=$((TAG + 1))
+        echo "::set-output name=new_tag::v$NEW_TAG"
     - name: Upload executable file
       uses: actions/upload-release-asset@v1
       env:
