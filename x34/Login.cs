@@ -47,7 +47,7 @@ namespace x34
                 info = Generate.options( dir, false );
             }
             catch (Exception)
-            { 
+            {
                 this.Close();
             }
         }
