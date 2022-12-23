@@ -356,3 +356,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /x34/bin/Debug/recent
+/x34/bin/Debug/x34.exe.config
