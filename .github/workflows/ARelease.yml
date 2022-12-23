@@ -9,7 +9,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: latest_release
-      run: curl -s https://api.github.com/repos/$GITHUB_REPOSITORY/tags | jq '.[0].name'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
     - name: Extract and increment tag
       run: |
         TAG=$(echo ${{ steps.latest_release.outputs.tag_name }} | sed 's/[^0-9]*//g')
