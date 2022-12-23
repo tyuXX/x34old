@@ -34,6 +34,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: x34/x34/bin/Debug/
+        asset_path: .//x34/bin/Debug/
         asset_name: my-app-${{ github.ref }}.exe
         asset_content_type: application/octet-stream
