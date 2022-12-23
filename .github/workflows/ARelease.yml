@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: latest_release
+      run: git describe --tags $(git rev-list --tags --max-count=1)
     - name: Extract and increment tag
       run: |
         TAG=$(echo ${{ steps.latest_release.outputs.tag_name }} | sed 's/[^0-9]*//g')
