@@ -357,3 +357,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /x34/bin/Debug/recent
 /x34/bin/Debug/x34.exe.config
+/.github/workflows/ARelease.yml
