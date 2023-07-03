@@ -8,7 +8,6 @@ namespace x34
 {
     public partial class x34Editor : Form
     {
-        #region Vars
         public string dir = "C:";
         public string username = "user";
         public string userrole = "Default";
@@ -17,7 +16,6 @@ namespace x34
         internal bool theme = false;
         internal bool newopen = false;
         internal string openfile = "";
-        #endregion Vars
         public x34Editor( )
         {
             InitializeComponent ( );

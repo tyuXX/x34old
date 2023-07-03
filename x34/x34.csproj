@@ -65,39 +65,45 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Generate.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Shared\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="x34.cs">
+    <Compile Include="Shared\x34.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="x34.Designer.cs">
+    <Compile Include="Shared\x34.Designer.cs">
       <DependentUpon>x34.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="x34AdminMenu.cs">
+    <Compile Include="Shared\x34AdminMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="x34AdminMenu.Designer.cs">
+    <Compile Include="Shared\x34AdminMenu.Designer.cs">
       <DependentUpon>x34AdminMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="x34Editor.cs">
+    <Compile Include="Shared\x34Editor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="x34Editor.Designer.cs">
+    <Compile Include="Shared\x34Editor.Designer.cs">
       <DependentUpon>x34Editor.cs</DependentUpon>
     </Compile>
-    <Compile Include="x34Generator.cs">
+    <Compile Include="Shared\x34Generator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="x34Generator.Designer.cs">
+    <Compile Include="Shared\x34Generator.Designer.cs">
       <DependentUpon>x34Generator.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Shared\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -109,20 +115,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="x34.resx">
+    <EmbeddedResource Include="Shared\x34.resx">
       <DependentUpon>x34.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="x34AdminMenu.resx">
+    <EmbeddedResource Include="Shared\x34AdminMenu.resx">
       <DependentUpon>x34AdminMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="x34Editor.resx">
+    <EmbeddedResource Include="Shared\x34Editor.resx">
       <DependentUpon>x34Editor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="x34Generator.resx">
+    <EmbeddedResource Include="Shared\x34Generator.resx">
       <DependentUpon>x34Generator.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".editorconfig" />
-    <None Include="bin\Debug\x34.exe.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -136,13 +141,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\x34.exe" />
-    <Content Include="bin\Debug\x34.pdb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
